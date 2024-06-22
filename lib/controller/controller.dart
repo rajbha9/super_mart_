@@ -263,7 +263,7 @@ class UserData extends ChangeNotifier {
         'State': state.text.toString(),
         'Landmark': city.text.toString(),
       }).then((value) {
-        Navigator.of(context).pushNamed('main');
+        Navigator.of(context).pushReplacementNamed('main');
       });
     }
   }
@@ -343,4 +343,43 @@ class UserData extends ChangeNotifier {
       (value) => Navigator.of(context).pop(),
     );
   }
+
+  List<Map<String, dynamic>> settingList = [
+    {
+      'titel': 'Basic Informetoin',
+      'titelicon': Icons.info_outline,
+      'actoinicon': Icons.arrow_forward_ios
+    },
+    {
+      'titel': 'Job Informetoin',
+      'titelicon': Icons.location_city,
+      'actoinicon': Icons.arrow_forward_ios
+    },
+    {
+      'titel': 'Location Detail',
+      'titelicon': Icons.location_on_outlined,
+      'actoinicon': Icons.arrow_forward_ios
+    },
+    {
+      'titel': 'Document',
+      'titelicon': Icons.edit_document,
+      'actoinicon': Icons.arrow_forward_ios
+    },
+    {
+      'titel': 'Privacy and Security',
+      'titelicon': Icons.private_connectivity,
+      'actoinicon': Icons.arrow_forward_ios
+    },
+    {
+      'titel': 'Settings',
+      'titelicon': Icons.settings_suggest_outlined,
+      'actoinicon': Icons.arrow_forward_ios
+    },
+    {
+      'titel': 'Log Out',
+      'titelicon': Icons.logout,
+      'color': Colors.red,
+      'actoinicon': Icons.arrow_forward_ios
+    },
+  ];
 }

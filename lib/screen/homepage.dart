@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:super_mart/controller/controller.dart';
 import '../widgets/drawer.dart';
-import '../widgets/nevbar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,14 +11,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
- 
   @override
   Widget build(BuildContext context) {
     UserData data = Provider.of<UserData>(context);
     double displaywidth = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      
+      // backgroundColor: Colors.amber,
       appBar: AppBar(
         actions: [
           IconButton(
@@ -91,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.of(context).pushNamed('pending');
+                        Navigator.of(context).pushNamed('completed');
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(4.0),
