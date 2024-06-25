@@ -7,8 +7,10 @@ import 'package:image_picker/image_picker.dart';
 import '../model/orderdetails.dart';
 
 class UserData extends ChangeNotifier {
+  static const getnumber = '';
   File? imageFile;
   String? imageUrl;
+  static String prefNumber = '';
   TextEditingController number = TextEditingController();
   TextEditingController otp1 = TextEditingController();
   TextEditingController otp2 = TextEditingController();
@@ -273,7 +275,7 @@ class UserData extends ChangeNotifier {
     String time = '${timenow.month}-${timenow.year}';
     await firestore
         .collection('users')
-        .doc('+91${number.text}')
+        .doc('+91$prefNumber')
         .collection('cart')
         .doc(time)
         .collection('orders')
@@ -310,7 +312,7 @@ class UserData extends ChangeNotifier {
     String time = '${timenow.month}-${timenow.year}';
     return firestore
         .collection('users')
-        .doc('+916263646500')
+        .doc('+91$prefNumber')
         .collection('cart')
         .doc(time)
         .collection('orders')
@@ -320,7 +322,7 @@ class UserData extends ChangeNotifier {
   Stream<QuerySnapshot<Map<String, dynamic>>> fetchProfileData() {
     return firestore
         .collection('users')
-        .doc('+916263646500')
+        .doc('+91$prefNumber')
         .collection('Profile')
         .snapshots();
   }
@@ -328,7 +330,7 @@ class UserData extends ChangeNotifier {
   upDataProfile(BuildContext context, String docid) {
     firestore
         .collection('users')
-        .doc('+916263646500')
+        .doc('+91$prefNumber')
         .collection('Profile')
         .doc(docid)
         .update({

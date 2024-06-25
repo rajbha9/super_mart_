@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:super_mart/screen/homepage.dart';
+import 'package:super_mart/screen/orderpage.dart';
+import 'package:super_mart/screen/pandingpage.dart';
+import 'package:super_mart/screen/profilepage.dart';
 
 class Nevbar extends StatefulWidget {
   const Nevbar({super.key});
@@ -133,10 +137,10 @@ class NevbarState extends State<Nevbar> {
     'pending',
     'profile',
   ];
-  // List<Widget> widgetList = [
-  //   HomePage(),
-  //   OrderPage(),
-  //   PandingPage(),
-  //   ProfilePage()
-  // ];
+  List<Widget> widgetList = [
+    HomePage(),
+    OrderPage(),
+    PendingPage(),
+    Profilepage()
+  ];
 }

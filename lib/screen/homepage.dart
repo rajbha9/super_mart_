@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:icons_plus/icons_plus.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:super_mart/controller/controller.dart';
 import '../widgets/drawer.dart';
 
@@ -11,6 +13,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getdata();
+  }
+
+  void getdata() async {
+    var prefs = await SharedPreferences.getInstance();
+    UserData.prefNumber = prefs.getString('firebasenumber')!;
+  }
+
   @override
   Widget build(BuildContext context) {
     UserData data = Provider.of<UserData>(context);
@@ -24,7 +38,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {
                 data.changeThemedata();
               },
-              icon: Icon(Icons.restart_alt_rounded)),
+              icon: Icon(Icons.change_circle)),
           SizedBox(
             width: displaywidth * 0.01,
           )

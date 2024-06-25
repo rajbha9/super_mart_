@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../controller/controller.dart';
 
 class AccountPage extends StatefulWidget {
@@ -301,6 +302,9 @@ class _AccountPageState extends State<AccountPage> {
                     InkWell(
                       onTap: () async {
                         providerdata.addProfileDetailonFirebase(context);
+                        var prefs = await SharedPreferences.getInstance();
+                        prefs.setString('firebasenumber',
+                            providerdata.number.text.toString());
                       },
                       child: Container(
                         height: displaywidth * 0.065,

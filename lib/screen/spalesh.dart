@@ -11,6 +11,7 @@ class SpaleshPage extends StatefulWidget {
 }
 
 class _SpaleshPageState extends State<SpaleshPage> {
+  var getnumber;
   @override
   void initState() {
     // TODO: implement initState
@@ -20,6 +21,7 @@ class _SpaleshPageState extends State<SpaleshPage> {
           ? Navigator.of(context).pushReplacementNamed('main')
           : Navigator.of(context).pushReplacementNamed('/');
     });
+    // getdata();
   }
 
   @override
@@ -33,4 +35,9 @@ class _SpaleshPageState extends State<SpaleshPage> {
       ),
     );
   }
+
+  // void getdata() async {
+  //   var prefs = await SharedPreferences.getInstance();
+  //   UserData.prefNumber = prefs.getString('firebasenumber')!;
+  // }
 }

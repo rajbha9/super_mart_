@@ -30,7 +30,6 @@ class _OtpPageState extends State<OtpPage> {
         ),
       ),
       child: Scaffold(
-        // backgroundColor: Colors.transparent,
         backgroundColor: Colors.green.shade900.withOpacity(0.7),
         body: SingleChildScrollView(
           child: Column(
@@ -87,7 +86,6 @@ class _OtpPageState extends State<OtpPage> {
                         top: 20, right: 30, bottom: 20, left: 30),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      // mainAxisAlignment: MainAxisAlignment.start,
                       children: [ SizedBox(
                           height: displaywidth * 0.025,
                         ),
@@ -294,8 +292,6 @@ class _OtpPageState extends State<OtpPage> {
                             } catch (ex) {
                               log('$ex');
                             }
-                            // Navigator.of(context)
-                            //     .pushReplacementNamed('account');
                           },
                           child: Container(
                             height: displaywidth * 0.065,
