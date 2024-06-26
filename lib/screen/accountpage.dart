@@ -45,12 +45,12 @@ class _AccountPageState extends State<AccountPage> {
         ),
         // backgroundColor: Colors.transparent,
         backgroundColor: Colors.green.shade900.withOpacity(0.7),
-        body: Padding(
-          padding: const EdgeInsets.only(right: 15, left: 15),
-          child: SingleChildScrollView(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(right: 15, left: 15),
             child: Container(
               width: double.infinity,
-              height: displaywidth * 0.95,
+              height: displaywidth * 0.99,
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.7),
                 borderRadius: const BorderRadius.all(
@@ -59,8 +59,7 @@ class _AccountPageState extends State<AccountPage> {
               ),
               child: Padding(
                 padding: const EdgeInsets.only(top: 25, right: 30, left: 30),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: ListView(
                   children: [
                     const Text(
                       'Profile Photo',
@@ -116,7 +115,7 @@ class _AccountPageState extends State<AccountPage> {
                                         child: CircleAvatar(
                                           backgroundColor:
                                               Colors.green.withOpacity(0.5),
-                                          radius: 30,
+                                          radius: displaywidth * 0.03,
                                           child: const Icon(
                                               Icons.camera_alt_outlined,
                                               size: 30),
@@ -297,8 +296,9 @@ class _AccountPageState extends State<AccountPage> {
                           borderSide: BorderSide(color: Colors.amber),
                         ),
                       ),
+                    ),SizedBox(
+                      height: displaywidth * 0.03,
                     ),
-                    const Spacer(),
                     InkWell(
                       onTap: () async {
                         providerdata.addProfileDetailonFirebase(context);
@@ -323,8 +323,9 @@ class _AccountPageState extends State<AccountPage> {
                           ),
                         ),
                       ),
+                    ),SizedBox(
+                      height: displaywidth * 0.03,
                     ),
-                    const Spacer()
                   ],
                 ),
               ),

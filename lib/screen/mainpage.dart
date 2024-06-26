@@ -53,7 +53,7 @@ class _MainpageState extends State<Mainpage> {
             icon: Icons.home_rounded,
             text: 'home',
           ),
-          GButton(
+          GButton( 
             icon: Icons.fire_truck_rounded,
             text: 'Order',
           ),

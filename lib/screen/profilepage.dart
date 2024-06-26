@@ -92,7 +92,7 @@ class _ProfilepageState extends State<Profilepage> {
                                         child: CircleAvatar(
                                           backgroundColor:
                                               Color.fromARGB(255, 128, 60, 187),
-                                          radius: 30,
+                                          radius: displaywidth * 0.03,
                                           child: const Icon(
                                               Icons.camera_alt_outlined,
                                               size: 30),
@@ -114,7 +114,7 @@ class _ProfilepageState extends State<Profilepage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          (data.imageFile == null)
+                          (doc['profile photo'] == 'null')
                               ? const CircleAvatar(
                                   radius: 70,
                                   backgroundColor:
@@ -123,7 +123,8 @@ class _ProfilepageState extends State<Profilepage> {
                                 )
                               : CircleAvatar(
                                   radius: 70,
-                                  backgroundImage: FileImage(data.imageFile!),
+                                  backgroundImage:
+                                      NetworkImage(doc['profile photo']),
                                 ),
                         ],
                       ),
@@ -299,7 +300,7 @@ class _ProfilepageState extends State<Profilepage> {
                                     data.upDataProfile(context, docid);
                                   },
                                   child: Text(
-                                    'ok',
+                                    'Done',
                                     style: TextStyle(color: Colors.blue),
                                   ),
                                 ),

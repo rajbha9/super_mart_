@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:super_mart/screen/otppage.dart';
 
 import '../model/orderdetails.dart';
 
@@ -216,8 +218,19 @@ class UserData extends ChangeNotifier {
     TaskSnapshot uploadTask = await ref.putFile(imageFile!);
 
     imageUrl = await uploadTask.ref.getDownloadURL();
+    firestore
+        .collection('users')
+        .doc('+91$prefNumber')
+        .collection('Profile')
+        .doc('1')
+        .update({
+      'profile photo': imageUrl,
+    });
+    print('++++++++++++++++++++11111$imageFile 111111++++++++++++++++++++++');
 
-    print(imageUrl);
+    print(
+        '++++++++++++++++++++++++22222$imageUrl 22222+++++++++++++++++++++++');
+    notifyListeners();
   }
 
   // List orderAcceptList = [];
@@ -238,6 +251,9 @@ class UserData extends ChangeNotifier {
     theme = !theme;
     notifyListeners();
   }
+  // fetchingOrders(){
+  //   FirebaseAuth.instance
+  // }
 
   addProfileDetailonFirebase(BuildContext context) async {
     DateTime timenow = DateTime.now();
@@ -264,7 +280,15 @@ class UserData extends ChangeNotifier {
         'City': city.text.toString(),
         'State': state.text.toString(),
         'Landmark': city.text.toString(),
+        'profile photo': "$imageUrl"
       }).then((value) {
+        if (imageUrl == null) {
+          print(
+              '******************************************1111111111111111111111111111111111111');
+        } else {
+          print(
+              '-----------------------------------------22222222222222222222222');
+        }
         Navigator.of(context).pushReplacementNamed('main');
       });
     }

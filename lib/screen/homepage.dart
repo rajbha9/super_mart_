@@ -88,12 +88,15 @@ class _HomePageState extends State<HomePage> {
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                const Text(
-                                  'Complete Delivery',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: 1,
-                                      fontSize: 20),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: const Text(
+                                    'Complete Delivery',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 1,
+                                        fontSize: 20),
+                                  ),
                                 ),
                               ],
                             ),
@@ -133,12 +136,15 @@ class _HomePageState extends State<HomePage> {
                                 SizedBox(
                                   height: displaywidth * 0.01,
                                 ),
-                                const Text(
-                                  'Pending Delivery',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: 1,
-                                      fontSize: 20),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: const Text(
+                                    'Pending Delivery',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 1,
+                                        fontSize: 20),
+                                  ),
                                 ),
                               ],
                             ),
@@ -177,12 +183,15 @@ class _HomePageState extends State<HomePage> {
                                 SizedBox(
                                   height: displaywidth * 0.01,
                                 ),
-                                const Text(
-                                  'Cancel Delivery',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: 1,
-                                      fontSize: 20),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: const Text(
+                                    'Cancel Delivery',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 1,
+                                        fontSize: 20),
+                                  ),
                                 ),
                               ],
                             ),
@@ -221,12 +230,15 @@ class _HomePageState extends State<HomePage> {
                                 SizedBox(
                                   height: displaywidth * 0.01,
                                 ),
-                                const Text(
-                                  'Return Delivery',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: 1,
-                                      fontSize: 20),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: const Text(
+                                    'Return Delivery',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 1,
+                                        fontSize: 20),
+                                  ),
                                 ),
                               ],
                             ),
