@@ -40,36 +40,87 @@ class _CompleteDeliveryPageState extends State<CompleteDeliveryPage> {
               return Card(
                 elevation: 5,
                 child: Container(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: displaywidth * 0.015,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
+                  height: 160,
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Container(
+                          height: 150,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: NetworkImage(
+                                doc['product image'],
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(
-                              height: displaywidth * 0.005,
+                            Row(
+                              children: [
+                                Text('OrderID : '),
+                                Text(doc['Order Id ']),
+                              ],
                             ),
-                            Text(
-                              doc['product company'],
-                              style: const TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.bold),
+                            Row(
+                              children: [
+                                Text('Customer Number : '),
+                                Text(doc['customer number']),
+                              ],
                             ),
-                            Text(
-                              '${doc['product address']}\n⏱️ ${doc['time']}',
-                              style: const TextStyle(fontSize: 15),
+                            Row(
+                              children: [
+                                Text(
+                                  'Delivery Mode📍 : ',
+                                ),
+                                Text(
+                                  doc['dilivery mode'],
+                                  style: TextStyle(color: Colors.red),
+                                ),
+                              ],
                             ),
-                            SizedBox(
-                              height: displaywidth * 0.005,
-                            )
+                            SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    height: 20,
+                                    width: 250,
+                                    child: Text(doc['product name']),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            // Spacer(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'Rs : ',
+                                  style: TextStyle(
+                                    fontSize: 30,
+                                  ),
+                                ),
+                                Text(
+                                  doc['product price'].toString(),
+                                  style: TextStyle(
+                                      fontSize: 34, color: Colors.red),
+                                ),
+                              ],
+                            ),
                           ],
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               );

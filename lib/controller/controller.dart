@@ -1,12 +1,8 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:super_mart/screen/otppage.dart';
-
-import '../model/orderdetails.dart';
 
 class UserData extends ChangeNotifier {
   static const getnumber = '';
@@ -32,163 +28,163 @@ class UserData extends ChangeNotifier {
   String time = '03-jan-2022';
   bool theme = false;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  List<Orders> orderslist = [
-    Orders(
-        accept: false,
-        address: '📍 dr.yaganik road rajkot, 360001',
-        company: 'Puma Shoes',
-        image: 'asset/img/1.png',
-        time: '30-jan-2022'),
-    Orders(
-        accept: false,
-        address: '📍 ring road rajkot, 360001',
-        company: 'Nike Shoes',
-        image:
-            'asset/img/PNG_Image_Of_Running_Shoes_With_A_Clear_Background_-_Image_ID_18586_png_-_Free_PNG_Images-removebg-preview.png',
-        time: '20-feb-2022'),
-    Orders(
-        accept: false,
-        address: '📍 150 fit road rajkot, 360001',
-        company: 'Puma T-shirt',
-        image: 'asset/img/pp-removebg-preview.png',
-        time: '15-jan-2022'),
-    Orders(
-        accept: false,
-        address: '📍 amin marg road rajkot, 360001',
-        company: 'Nike T-shirt',
-        image: 'asset/img/nike-removebg-preview.png',
-        time: '6-jun-2022'),
-    Orders(
-        accept: false,
-        address: '📍 dr.yagnik road rajkot, 360001',
-        company: 'U.S. Polo Shirt',
-        image: 'asset/img/tomiy-removebg-preview.png',
-        time: '03-des-2022'),
-    Orders(
-        accept: false,
-        address: '📍 dr.yaganik road rajkot, 360001',
-        company: 'Puma Shoes',
-        image: 'asset/img/1.png',
-        time: '30-jan-2022'),
-    Orders(
-        accept: false,
-        address: '📍 ring road rajkot, 360001',
-        company: 'Nike Shoes',
-        image:
-            'asset/img/PNG_Image_Of_Running_Shoes_With_A_Clear_Background_-_Image_ID_18586_png_-_Free_PNG_Images-removebg-preview.png',
-        time: '20-feb-2022'),
-    Orders(
-        accept: false,
-        address: '📍 150 fit road rajkot, 360001',
-        company: 'Puma T-shirt',
-        image: 'asset/img/pp-removebg-preview.png',
-        time: '15-jan-2022'),
-    Orders(
-        accept: false,
-        address: '📍 amin marg road rajkot, 360001',
-        company: 'Nike T-shirt',
-        image: 'asset/img/nike-removebg-preview.png',
-        time: '6-jun-2022'),
-    Orders(
-        accept: false,
-        address: '📍 dr.yagnik road rajkot, 360001',
-        company: 'U.S. Polo Shirt',
-        image: 'asset/img/tomiy-removebg-preview.png',
-        time: '03-des-2022'),
-    Orders(
-        accept: false,
-        address: '📍 dr.yaganik road rajkot, 360001',
-        company: 'Puma Shoes',
-        image: 'asset/img/1.png',
-        time: '30-jan-2022'),
-    Orders(
-        accept: false,
-        address: '📍 ring road rajkot, 360001',
-        company: 'Nike Shoes',
-        image:
-            'asset/img/PNG_Image_Of_Running_Shoes_With_A_Clear_Background_-_Image_ID_18586_png_-_Free_PNG_Images-removebg-preview.png',
-        time: '20-feb-2022'),
-    Orders(
-        accept: false,
-        address: '📍 150 fit road rajkot, 360001',
-        company: 'Puma T-shirt',
-        image: 'asset/img/pp-removebg-preview.png',
-        time: '15-jan-2022'),
-    Orders(
-        accept: false,
-        address: '📍 amin marg road rajkot, 360001',
-        company: 'Nike T-shirt',
-        image: 'asset/img/nike-removebg-preview.png',
-        time: '6-jun-2022'),
-    Orders(
-        accept: false,
-        address: '📍 dr.yagnik road rajkot, 360001',
-        company: 'U.S. Polo Shirt',
-        image: 'asset/img/tomiy-removebg-preview.png',
-        time: '03-des-2022'),
-    Orders(
-        accept: false,
-        address: '📍 dr.yaganik road rajkot, 360001',
-        company: 'Puma Shoes',
-        image: 'asset/img/1.png',
-        time: '30-jan-2022'),
-    Orders(
-        accept: false,
-        address: '📍 ring road rajkot, 360001',
-        company: 'Nike Shoes',
-        image:
-            'asset/img/PNG_Image_Of_Running_Shoes_With_A_Clear_Background_-_Image_ID_18586_png_-_Free_PNG_Images-removebg-preview.png',
-        time: '20-feb-2022'),
-    Orders(
-        accept: false,
-        address: '📍 150 fit road rajkot, 360001',
-        company: 'Puma T-shirt',
-        image: 'asset/img/pp-removebg-preview.png',
-        time: '15-jan-2022'),
-    Orders(
-        accept: false,
-        address: '📍 amin marg road rajkot, 360001',
-        company: 'Nike T-shirt',
-        image: 'asset/img/nike-removebg-preview.png',
-        time: '6-jun-2022'),
-    Orders(
-        accept: false,
-        address: '📍 dr.yagnik road rajkot, 360001',
-        company: 'U.S. Polo Shirt',
-        image: 'asset/img/tomiy-removebg-preview.png',
-        time: '03-des-2022'),
-    Orders(
-        accept: false,
-        address: '📍 dr.yaganik road rajkot, 360001',
-        company: 'Puma Shoes',
-        image: 'asset/img/1.png',
-        time: '30-jan-2022'),
-    Orders(
-        accept: false,
-        address: '📍 ring road rajkot, 360001',
-        company: 'Nike Shoes',
-        image:
-            'asset/img/PNG_Image_Of_Running_Shoes_With_A_Clear_Background_-_Image_ID_18586_png_-_Free_PNG_Images-removebg-preview.png',
-        time: '20-feb-2022'),
-    Orders(
-        accept: false,
-        address: '📍 150 fit road rajkot, 360001',
-        company: 'Puma T-shirt',
-        image: 'asset/img/pp-removebg-preview.png',
-        time: '15-jan-2022'),
-    Orders(
-        accept: false,
-        address: '📍 amin marg road rajkot, 360001',
-        company: 'Nike T-shirt',
-        image: 'asset/img/nike-removebg-preview.png',
-        time: '6-jun-2022'),
-    Orders(
-        accept: false,
-        address: '📍 dr.yagnik road rajkot, 360001',
-        company: 'U.S. Polo Shirt',
-        image: 'asset/img/tomiy-removebg-preview.png',
-        time: '03-des-2022'),
-  ];
+  // List<Orders> orderslist = [
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 dr.yaganik road rajkot, 360001',
+  //       company: 'Puma Shoes',
+  //       image: 'asset/img/1.png',
+  //       time: '30-jan-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 ring road rajkot, 360001',
+  //       company: 'Nike Shoes',
+  //       image:
+  //           'asset/img/PNG_Image_Of_Running_Shoes_With_A_Clear_Background_-_Image_ID_18586_png_-_Free_PNG_Images-removebg-preview.png',
+  //       time: '20-feb-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 150 fit road rajkot, 360001',
+  //       company: 'Puma T-shirt',
+  //       image: 'asset/img/pp-removebg-preview.png',
+  //       time: '15-jan-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 amin marg road rajkot, 360001',
+  //       company: 'Nike T-shirt',
+  //       image: 'asset/img/nike-removebg-preview.png',
+  //       time: '6-jun-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 dr.yagnik road rajkot, 360001',
+  //       company: 'U.S. Polo Shirt',
+  //       image: 'asset/img/tomiy-removebg-preview.png',
+  //       time: '03-des-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 dr.yaganik road rajkot, 360001',
+  //       company: 'Puma Shoes',
+  //       image: 'asset/img/1.png',
+  //       time: '30-jan-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 ring road rajkot, 360001',
+  //       company: 'Nike Shoes',
+  //       image:
+  //           'asset/img/PNG_Image_Of_Running_Shoes_With_A_Clear_Background_-_Image_ID_18586_png_-_Free_PNG_Images-removebg-preview.png',
+  //       time: '20-feb-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 150 fit road rajkot, 360001',
+  //       company: 'Puma T-shirt',
+  //       image: 'asset/img/pp-removebg-preview.png',
+  //       time: '15-jan-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 amin marg road rajkot, 360001',
+  //       company: 'Nike T-shirt',
+  //       image: 'asset/img/nike-removebg-preview.png',
+  //       time: '6-jun-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 dr.yagnik road rajkot, 360001',
+  //       company: 'U.S. Polo Shirt',
+  //       image: 'asset/img/tomiy-removebg-preview.png',
+  //       time: '03-des-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 dr.yaganik road rajkot, 360001',
+  //       company: 'Puma Shoes',
+  //       image: 'asset/img/1.png',
+  //       time: '30-jan-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 ring road rajkot, 360001',
+  //       company: 'Nike Shoes',
+  //       image:
+  //           'asset/img/PNG_Image_Of_Running_Shoes_With_A_Clear_Background_-_Image_ID_18586_png_-_Free_PNG_Images-removebg-preview.png',
+  //       time: '20-feb-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 150 fit road rajkot, 360001',
+  //       company: 'Puma T-shirt',
+  //       image: 'asset/img/pp-removebg-preview.png',
+  //       time: '15-jan-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 amin marg road rajkot, 360001',
+  //       company: 'Nike T-shirt',
+  //       image: 'asset/img/nike-removebg-preview.png',
+  //       time: '6-jun-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 dr.yagnik road rajkot, 360001',
+  //       company: 'U.S. Polo Shirt',
+  //       image: 'asset/img/tomiy-removebg-preview.png',
+  //       time: '03-des-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 dr.yaganik road rajkot, 360001',
+  //       company: 'Puma Shoes',
+  //       image: 'asset/img/1.png',
+  //       time: '30-jan-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 ring road rajkot, 360001',
+  //       company: 'Nike Shoes',
+  //       image:
+  //           'asset/img/PNG_Image_Of_Running_Shoes_With_A_Clear_Background_-_Image_ID_18586_png_-_Free_PNG_Images-removebg-preview.png',
+  //       time: '20-feb-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 150 fit road rajkot, 360001',
+  //       company: 'Puma T-shirt',
+  //       image: 'asset/img/pp-removebg-preview.png',
+  //       time: '15-jan-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 amin marg road rajkot, 360001',
+  //       company: 'Nike T-shirt',
+  //       image: 'asset/img/nike-removebg-preview.png',
+  //       time: '6-jun-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 dr.yagnik road rajkot, 360001',
+  //       company: 'U.S. Polo Shirt',
+  //       image: 'asset/img/tomiy-removebg-preview.png',
+  //       time: '03-des-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 dr.yaganik road rajkot, 360001',
+  //       company: 'Puma Shoes',
+  //       image: 'asset/img/1.png',
+  //       time: '30-jan-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 ring road rajkot, 360001',
+  //       company: 'Nike Shoes',
+  //       image:
+  //           'asset/img/PNG_Image_Of_Running_Shoes_With_A_Clear_Background_-_Image_ID_18586_png_-_Free_PNG_Images-removebg-preview.png',
+  //       time: '20-feb-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 150 fit road rajkot, 360001',
+  //       company: 'Puma T-shirt',
+  //       image: 'asset/img/pp-removebg-preview.png',
+  //       time: '15-jan-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 amin marg road rajkot, 360001',
+  //       company: 'Nike T-shirt',
+  //       image: 'asset/img/nike-removebg-preview.png',
+  //       time: '6-jun-2022'),
+  //   Orders(
+  //       accept: false,
+  //       address: '📍 dr.yagnik road rajkot, 360001',
+  //       company: 'U.S. Polo Shirt',
+  //       image: 'asset/img/tomiy-removebg-preview.png',
+  //       time: '03-des-2022'),
+  // ];
 
   dynamic galleryimg() async {
     final ImagePicker picker = ImagePicker();
@@ -236,10 +232,10 @@ class UserData extends ChangeNotifier {
   // List orderAcceptList = [];
   // List orderRejectList = [];
 
-  orderAccepted(Orders data) {
-    orderslist.remove(data);
-    notifyListeners();
-  }
+  // orderAccepted(Orders data) {
+  //   orderslist.remove(data);
+  //   notifyListeners();
+  // }
 
   // orderCanceled(Orders data) {
   //   orderRejectList.add(data);
@@ -294,7 +290,7 @@ class UserData extends ChangeNotifier {
     }
   }
 
-  addInCartDelivery(Orders data) async {
+  addInCartDelivery(data) async {
     DateTime timenow = DateTime.now();
     String time = '${timenow.month}-${timenow.year}';
     await firestore
@@ -305,10 +301,12 @@ class UserData extends ChangeNotifier {
         .collection('orders')
         .doc()
         .set({
-      'product company': data.company,
-      'product address': data.address,
-      'product image': data.image,
-      'time': data.time,
+      'Order Id ': data['orderId'],
+      'customer number': data['deliveryPhone'],
+      'product image': data['orderItems'][0]['productImage'],
+      'product price': data['orderItems'][0]['productPrice'],
+      'product name': data['orderItems'][0]['productName'],
+      'dilivery mode': data['deliveryMode'],
     });
   }
 
@@ -408,4 +406,17 @@ class UserData extends ChangeNotifier {
       'actoinicon': Icons.arrow_forward_ios
     },
   ];
+  Stream<QuerySnapshot<Map<String, dynamic>>> fetchOrders() {
+    DateTime timenow = DateTime.now();
+    String year = '${timenow.year}';
+    String month = '${timenow.month}';
+
+    return FirebaseFirestore.instance
+        .collection('users')
+        .doc('+918888888888')
+        .collection('orders')
+        .doc(year)
+        .collection(month)
+        .snapshots();
+  }
 }

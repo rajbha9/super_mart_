@@ -1,14 +1,17 @@
 class Orders {
-  String company;
-  String address;
+  String orderId;
+  String customerNum;
+  String deliveryMode;
   String image;
-  String time;
-  bool accept;
+  String price;
+  String productName;
 
-  Orders(
-      {required this.accept,
-      required this.address,
-      required this.company,
-      required this.image,
-      required this.time});
+  Orders({
+    required this.orderId,
+    required this.customerNum,
+    required this.deliveryMode,
+    required this.image,
+    required this.price,
+    required this.productName,
+  });
 }

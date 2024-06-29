@@ -44,7 +44,7 @@ class _DrawerDataState extends State<DrawerData> {
                 child: Card(
                   elevation: 5,
                   child: Container(
-                    height: 50,
+                    height: displaywidth * 0.05,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: const Color(0xFFA22641),
