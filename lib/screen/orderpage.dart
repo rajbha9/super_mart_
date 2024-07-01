@@ -211,27 +211,3 @@ class _OrderPageState extends State<OrderPage> {
     );
   }
 }
-//ListView(
-//           children: orderslist.map(
-//             (e) {
-//               String img = e['image'];
-//               String com = e['company'];
-//               String add = e['address'];
-//               String time = e['time'];
-//               bool accept = e['accept'];
-//               int orderid = e['orderid'];
-//               return (accept == false)
-//                   ? Padding(
-//                       padding: const EdgeInsets.all(8.0),
-//                       child: Orders(
-//                           img: img,
-//                           com: com,
-//                           add: add,
-//                           time: time,
-//                           accept: accept,
-//                           orderid: orderid),
-//                     )
-//                   : Container();
-//             },
-//           ).toList(),
-//         ),

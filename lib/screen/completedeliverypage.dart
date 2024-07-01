@@ -35,6 +35,9 @@ class _CompleteDeliveryPageState extends State<CompleteDeliveryPage> {
           if (snapshot.hasError) {
             return Text(snapshot.error.toString());
           }
+          if (snapshot.data!.docs.isEmpty) {
+            return const Center(child: Text('No data'));
+          }
           return ListView(
             children: snapshot.data!.docs.map((doc) {
               return Card(

@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:super_mart/screen/accountpage.dart';
 import 'package:super_mart/screen/canceldeliverypage.dart';
 import 'package:super_mart/screen/completedeliverypage.dart';
-import 'package:super_mart/screen/detail.dart';
 import 'package:super_mart/screen/mainpage.dart';
 import 'package:super_mart/screen/otppage.dart';
 import 'package:super_mart/screen/returnpage.dart';
