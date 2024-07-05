@@ -60,7 +60,7 @@ class _OrderPageState extends State<OrderPage> {
                 },
                 child: Card(
                   elevation: 5,
-                  child: Container(
+                  child: SizedBox(
                     height: 200,
                     width: double.infinity,
                     child: Padding(

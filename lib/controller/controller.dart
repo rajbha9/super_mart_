@@ -408,6 +408,8 @@ class UserData extends ChangeNotifier {
   ];
   Stream<QuerySnapshot<Map<String, dynamic>>> fetchOrders() {
     DateTime timenow = DateTime.now();
+    DateTime twoMonthsAgo = timenow.subtract(Duration(days: 60));
+    print('**************{$twoMonthsAgo}***************');
     String year = '${timenow.year}';
     String month = '${timenow.month}';
 

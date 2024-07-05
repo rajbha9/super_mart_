@@ -313,15 +313,18 @@ class _HomePageState extends State<HomePage> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   children: [
-                                    Container(
-                                      height: 150,
-                                      width: 100,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          fit: BoxFit.fill,
-                                          image: NetworkImage(
-                                            doc['orderItems'][0]
-                                                ['productImage'],
+                                    Hero(
+                                      tag: doc['orderItems'][0]['productImage'],
+                                      child: Container(
+                                        height: 150,
+                                        width: 100,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                            fit: BoxFit.fill,
+                                            image: NetworkImage(
+                                              doc['orderItems'][0]
+                                                  ['productImage'],
+                                            ),
                                           ),
                                         ),
                                       ),
