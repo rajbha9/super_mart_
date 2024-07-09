@@ -6,6 +6,7 @@ import 'package:super_mart/screen/canceldeliverypage.dart';
 import 'package:super_mart/screen/completedeliverypage.dart';
 import 'package:super_mart/screen/mainpage.dart';
 import 'package:super_mart/screen/otppage.dart';
+import 'package:super_mart/screen/pandingpage.dart';
 import 'package:super_mart/screen/returnpage.dart';
 import 'package:super_mart/screen/spalesh.dart';
 import 'package:super_mart/screen/welcomepage.dart';
@@ -47,6 +48,7 @@ class _MyAppState extends State<MyApp> {
           'account': (context) => const AccountPage(),
           'spalesh': (context) => const SpaleshPage(),
           'completed': (context) => const CompleteDeliveryPage(),
+          'panding': (context) => const PendingPage(),
           'canceled': (context) => const CancelDeliveryPage(),
           'return': (context) => const ReturnPage(),
           'main': (context) => Mainpage(),

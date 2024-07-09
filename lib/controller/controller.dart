@@ -310,6 +310,20 @@ class UserData extends ChangeNotifier {
     });
   }
 
+  orderAccepted(docid) async {
+    DateTime timenow = DateTime.now();
+    String year = '${timenow.year}';
+    String month = '${timenow.month}';
+    await firestore
+        .collection('users')
+        .doc('+918888888888')
+        .collection('orders')
+        .doc(year)
+        .collection(month)
+        .doc(docid)
+        .update({'deliveryStatus': true});
+  }
+
   // rejectForDelivery(Orders data) async {
   //   DateTime timenow = DateTime.now();
   //   String time = '${timenow.day}-${timenow.month}';
@@ -409,7 +423,7 @@ class UserData extends ChangeNotifier {
   Stream<QuerySnapshot<Map<String, dynamic>>> fetchOrders() {
     DateTime timenow = DateTime.now();
     DateTime twoMonthsAgo = timenow.subtract(Duration(days: 60));
-    print('**************{$twoMonthsAgo}***************');
+    // print('**************{$twoMonthsAgo}***************');
     String year = '${timenow.year}';
     String month = '${timenow.month}';
 

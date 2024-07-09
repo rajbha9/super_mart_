@@ -22,7 +22,7 @@ class _CompleteDeliveryPageState extends State<CompleteDeliveryPage> {
         title: Text('Completed Delivery'),
       ),
       body: StreamBuilder(
-        stream: data.getData(),
+        stream: data.fetchOrders(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return Center(
@@ -40,93 +40,98 @@ class _CompleteDeliveryPageState extends State<CompleteDeliveryPage> {
           }
           return ListView(
             children: snapshot.data!.docs.map((doc) {
-              return Card(
-                elevation: 5,
-                child: Container(
-                  height: 160,
-                  width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Container(
-                          height: 150,
-                          width: 100,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: NetworkImage(
-                                doc['product image'],
+              return (doc['deliveryStatus'] == true)
+                  ? Card(
+                      elevation: 5,
+                      child: Container(
+                        height: 160,
+                        width: double.infinity,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 150,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image: NetworkImage(
+                                      doc['orderItems'][0]['productImage'],
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Text('OrderID : '),
-                                Text(doc['Order Id ']),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text('Customer Number : '),
-                                Text(doc['customer number']),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  'Delivery Mode📍 : ',
-                                ),
-                                Text(
-                                  doc['dilivery mode'],
-                                  style: TextStyle(color: Colors.red),
-                                ),
-                              ],
-                            ),
-                            SingleChildScrollView(
-                              scrollDirection: Axis.vertical,
-                              child: Row(
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  SizedBox(
-                                    height: 20,
-                                    width: 250,
-                                    child: Text(doc['product name']),
+                                  Row(
+                                    children: [
+                                      Text('OrderID : '),
+                                      Text(doc['orderId']),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text('Customer Number : '),
+                                      Text(doc['deliveryPhone']),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        'Delivery Mode📍 : ',
+                                      ),
+                                      Text(
+                                        doc['deliveryMode'],
+                                        style: TextStyle(color: Colors.red),
+                                      ),
+                                    ],
+                                  ),
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.vertical,
+                                    child: Row(
+                                      children: [
+                                        SizedBox(
+                                          height: 20,
+                                          width: 250,
+                                          child: Text(doc['orderItems'][0]
+                                              ['productName']),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  // Spacer(),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Text(
+                                        'Rs : ',
+                                        style: TextStyle(
+                                          fontSize: 30,
+                                        ),
+                                      ),
+                                      Text(
+                                        doc['orderItems'][0]['productPrice']
+                                            .toString(),
+                                        style: TextStyle(
+                                            fontSize: 34, color: Colors.red),
+                                      ),
+                                    ],
                                   ),
                                 ],
-                              ),
-                            ),
-                            // Spacer(),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text(
-                                  'Rs : ',
-                                  style: TextStyle(
-                                    fontSize: 30,
-                                  ),
-                                ),
-                                Text(
-                                  doc['product price'].toString(),
-                                  style: TextStyle(
-                                      fontSize: 34, color: Colors.red),
-                                ),
-                              ],
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              );
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  : Container();
             }).toList(),
           );
         },

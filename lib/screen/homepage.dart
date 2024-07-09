@@ -50,11 +50,11 @@ class _HomePageState extends State<HomePage> {
       body: PageView(
         children: [
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(8.0),
             child: ListView(
               children: [
                 SizedBox(
-                  height: displaywidth * 0.430,
+                  height: displaywidth * 0.48,
                   width: double.infinity,
                   child: GridView(
                     gridDelegate:
@@ -93,12 +93,12 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: const Text(
+                                    child: Text(
                                       'Complete Delivery',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           letterSpacing: 1,
-                                          fontSize: 18),
+                                          fontSize: displaywidth * 0.018),
                                     ),
                                   ),
                                 ],
@@ -109,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).pushNamed('completed');
+                          Navigator.of(context).pushNamed('panding');
                         },
                         child: Padding(
                           padding: const EdgeInsets.all(4.0),
@@ -279,188 +279,204 @@ class _HomePageState extends State<HomePage> {
                     if (snapshot.hasError) {
                       return Text(snapshot.error.toString());
                     }
+                    final documents = snapshot.data!.docs;
                     return Column(
                       children: snapshot.data!.docs.map((doc) {
-                        // String idname = doc.id;
-                        return InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return ProductDetailPage(
-                                    customerNum: doc['deliveryPhone'],
-                                    orderId: doc['orderId'],
-                                    deliveryMode: doc['deliveryMode'],
-                                    image: doc['orderItems'][0]['productImage'],
-                                    price: doc['orderItems'][0]['productPrice']
-                                        .toString(),
-                                    productName: doc['orderItems'][0]
-                                        ['productName'],
-                                    userAddress: doc['userAddress'],
-                                    userName: doc['userName'],
-                                    paymentMode: doc['paymentMode'],
+                        String idname = doc.id;
+                        return (doc['deliveryStatus'] == false &&
+                                doc['orderCancel'] == 'No')
+                            ? InkWell(
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return ProductDetailPage(
+                                          customerNum: doc['deliveryPhone'],
+                                          orderId: doc['orderId'],
+                                          deliveryMode: doc['deliveryMode'],
+                                          image: doc['orderItems'][0]
+                                              ['productImage'],
+                                          price: doc['orderItems'][0]
+                                                  ['productPrice']
+                                              .toString(),
+                                          productName: doc['orderItems'][0]
+                                              ['productName'],
+                                          userAddress: doc['userAddress'],
+                                          userName: doc['userName'],
+                                          paymentMode: doc['paymentMode'],
+                                        );
+                                      },
+                                    ),
                                   );
                                 },
-                              ),
-                            );
-                          },
-                          child: Card(
-                            elevation: 5,
-                            child: Container(
-                              height: 200,
-                              width: double.infinity,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    Hero(
-                                      tag: doc['orderItems'][0]['productImage'],
-                                      child: Container(
-                                        height: 150,
-                                        width: 100,
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                            fit: BoxFit.fill,
-                                            image: NetworkImage(
-                                              doc['orderItems'][0]
-                                                  ['productImage'],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text('OrderID : '),
-                                            Text(doc['orderId']),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text('Customer Number : '),
-                                            Text(doc['deliveryPhone']),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              'Delivery Mode📍 : ',
-                                            ),
-                                            Text(
-                                              doc['deliveryMode'],
-                                              style:
-                                                  TextStyle(color: Colors.red),
-                                            ),
-                                          ],
-                                        ),
-                                        SingleChildScrollView(
-                                          scrollDirection: Axis.vertical,
-                                          child: Row(
-                                            children: [
-                                              SizedBox(
-                                                height: 20,
-                                                width: 250,
-                                                child: Text(doc['orderItems'][0]
-                                                    ['productName']),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            Text(
-                                              'Rs : ',
-                                              style: TextStyle(
-                                                fontSize: 27,
-                                              ),
-                                            ),
-                                            Text(
-                                              doc['orderItems'][0]
-                                                      ['productPrice']
-                                                  .toString(),
-                                              style: TextStyle(
-                                                  fontSize: 24,
-                                                  color: Colors.red),
-                                            ),
-                                          ],
-                                        ),
-                                        Spacer(),
-                                        Row(
-                                          children: [
-                                            InkWell(
-                                              onTap: () async {
-                                                // data.orderAccepted(e);
-                                                data.addInCartDelivery(doc);
-                                              },
-                                              child: Card(
-                                                elevation: 5,
-                                                child: Container(
-                                                  height: displaywidth * 0.040,
-                                                  width: displaywidth * 0.110,
-                                                  decoration: BoxDecoration(
-                                                      color: Colors.green,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10)),
-                                                  child: const Center(
-                                                    child: Text(
-                                                      'Accept',
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          letterSpacing: 1,
-                                                          fontSize: 15),
-                                                    ),
+                                child: Card(
+                                  elevation: 5,
+                                  child: Container(
+                                    height: 200,
+                                    width: double.infinity,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        children: [
+                                          Hero(
+                                            tag: doc['orderItems'][0]
+                                                ['productImage'],
+                                            child: Container(
+                                              height: 150,
+                                              width: 100,
+                                              decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                                  fit: BoxFit.fill,
+                                                  image: NetworkImage(
+                                                    doc['orderItems'][0]
+                                                        ['productImage'],
                                                   ),
                                                 ),
                                               ),
                                             ),
-                                            SizedBox(
-                                              width: displaywidth * 0.010,
-                                            ),
-                                            InkWell(
-                                              onTap: () {
-                                                // data.orderCanceled(e);
-                                              },
-                                              child: Card(
-                                                elevation: 5,
-                                                child: Container(
-                                                  height: displaywidth * 0.040,
-                                                  width: displaywidth * 0.110,
-                                                  decoration: BoxDecoration(
-                                                      color: Colors.red,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10)),
-                                                  child: const Center(
-                                                      child: Text(
-                                                    'Reject',
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        letterSpacing: 1,
-                                                        fontSize: 15),
-                                                  )),
-                                                ),
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Text('OrderID : '),
+                                                  Text(doc['orderId']),
+                                                ],
                                               ),
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    )
-                                  ],
+                                              Row(
+                                                children: [
+                                                  Text('Customer Number : '),
+                                                  Text(doc['deliveryPhone']),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    'Delivery Mode📍 : ',
+                                                  ),
+                                                  Text(
+                                                    doc['deliveryMode'],
+                                                    style: TextStyle(
+                                                        color: Colors.red),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    'Quantity : ',
+                                                  ),
+                                                  Text(doc['orderItems'][0]
+                                                          ['productQuantity']
+                                                      .toString()),
+                                                ],
+                                              ),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: [
+                                                  Text(
+                                                    'Rs : ',
+                                                    style: TextStyle(
+                                                      fontSize: 27,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    doc['orderItems'][0]
+                                                            ['productPrice']
+                                                        .toString(),
+                                                    style: TextStyle(
+                                                        fontSize: 24,
+                                                        color: Colors.red),
+                                                  ),
+                                                ],
+                                              ),
+                                              Spacer(),
+                                              Row(
+                                                children: [
+                                                  InkWell(
+                                                    onTap: () async {
+                                                      // data.orderAccepted(e);
+                                                      data.orderAccepted(
+                                                          idname);
+                                                      data.addInCartDelivery(
+                                                          doc);
+                                                    },
+                                                    child: Card(
+                                                      elevation: 5,
+                                                      child: Container(
+                                                        height: displaywidth *
+                                                            0.040,
+                                                        width: displaywidth *
+                                                            0.110,
+                                                        decoration: BoxDecoration(
+                                                            color: Colors.green,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10)),
+                                                        child: const Center(
+                                                          child: Text(
+                                                            'Accept',
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .white,
+                                                                letterSpacing:
+                                                                    1,
+                                                                fontSize: 15),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: displaywidth * 0.010,
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      // data.orderCanceled(e);
+                                                    },
+                                                    child: Card(
+                                                      elevation: 5,
+                                                      child: Container(
+                                                        height: displaywidth *
+                                                            0.040,
+                                                        width: displaywidth *
+                                                            0.110,
+                                                        decoration: BoxDecoration(
+                                                            color: Colors.red,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10)),
+                                                        child: const Center(
+                                                            child: Text(
+                                                          'Reject',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              letterSpacing: 1,
+                                                              fontSize: 15),
+                                                        )),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
-                        );
+                              )
+                            : Container();
                       }).toList(),
                     );
                   },

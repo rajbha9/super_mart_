@@ -27,6 +27,7 @@ class ProductDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final doc = ModalRoute.of(context)!.settings.arguments;
+    double displaywidth = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(),
       body: Stack(
@@ -62,15 +63,15 @@ class ProductDetailPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            height: 5,
-                            width: 40,
+                            height: displaywidth * 0.007,
+                            width: displaywidth * 0.07,
                             color: const Color.fromARGB(255, 83, 83, 83),
                           ),
                         ],
                       ),
                     ),
                     Container(
-                      height: 500,
+                      height: displaywidth * 0.55,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(40),
@@ -83,11 +84,11 @@ class ProductDetailPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            height: 40,
+                            height: displaywidth * 0.035,
                           ),
                           Text.rich(
                             TextSpan(
-                              style: TextStyle(fontSize: 25),
+                              style: TextStyle(fontSize: displaywidth * 0.025),
                               children: [
                                 TextSpan(text: 'User Name : '),
                                 TextSpan(text: userName),
@@ -96,7 +97,7 @@ class ProductDetailPage extends StatelessWidget {
                           ),
                           Text.rich(
                             TextSpan(
-                              style: TextStyle(fontSize: 25),
+                              style: TextStyle(fontSize: displaywidth * 0.025),
                               children: [
                                 TextSpan(text: 'User Address : '),
                                 TextSpan(text: userAddress),
@@ -105,7 +106,7 @@ class ProductDetailPage extends StatelessWidget {
                           ),
                           Text.rich(
                             TextSpan(
-                              style: TextStyle(fontSize: 25),
+                              style: TextStyle(fontSize: displaywidth * 0.025),
                               children: [
                                 TextSpan(text: 'Order Id : '),
                                 TextSpan(text: orderId),
@@ -114,7 +115,7 @@ class ProductDetailPage extends StatelessWidget {
                           ),
                           Text.rich(
                             TextSpan(
-                              style: TextStyle(fontSize: 25),
+                              style: TextStyle(fontSize: displaywidth * 0.025),
                               children: [
                                 TextSpan(text: 'Payment Method : '),
                                 TextSpan(text: paymentMode),
@@ -123,7 +124,7 @@ class ProductDetailPage extends StatelessWidget {
                           ),
                           Text.rich(
                             TextSpan(
-                              style: TextStyle(fontSize: 25),
+                              style: TextStyle(fontSize: displaywidth * 0.025),
                               children: [
                                 TextSpan(text: 'Customer Number: '),
                                 TextSpan(text: customerNum),
@@ -132,7 +133,7 @@ class ProductDetailPage extends StatelessWidget {
                           ),
                           Text.rich(
                             TextSpan(
-                              style: TextStyle(fontSize: 25),
+                              style: TextStyle(fontSize: displaywidth * 0.025),
                               children: [
                                 TextSpan(text: 'Delivery Mode : '),
                                 TextSpan(text: deliveryMode),
@@ -141,7 +142,7 @@ class ProductDetailPage extends StatelessWidget {
                           ),
                           Text.rich(
                             TextSpan(
-                              style: TextStyle(fontSize: 25),
+                              style: TextStyle(fontSize: displaywidth * 0.025),
                               children: [
                                 TextSpan(text: 'Product Name : '),
                                 TextSpan(text: productName),
@@ -150,7 +151,7 @@ class ProductDetailPage extends StatelessWidget {
                           ),
                           Text.rich(
                             TextSpan(
-                              style: TextStyle(fontSize: 25),
+                              style: TextStyle(fontSize: displaywidth * 0.025),
                               children: [
                                 TextSpan(text: 'Product Price : '),
                                 TextSpan(text: price),
